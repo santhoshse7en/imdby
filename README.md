@@ -43,12 +43,12 @@ details = imdb('tt4154796')
 # print the names of the directors of the movie
 print('Directors:')
 for i in range(len(details.directors)):
-  print(details.directors[i])
+    print(details.directors[i])
 
 # print the genres of the movie
 print('Genres:')
 for i in range(len(details.genre)):
-  print(genre)
+    print(details.genre[i])
 ```
 
 ## Contributing
