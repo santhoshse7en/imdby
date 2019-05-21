@@ -1,6 +1,6 @@
-# IMDb
+# imbpy
 
-**IMDb** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, people, characters and companies.
+**imdby** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, people, characters and companies.
 
 ## Main features
 
@@ -12,7 +12,7 @@
 
 - released under the terms of the MIT license
 
-IMDbPY powers many other software and has been used in various research papers. _`Curious about that`_?    
+imbpy powers many other software and has been used in various research papers. _`Curious about that`_?    
 
 
 ## Installation
@@ -20,23 +20,35 @@ IMDbPY powers many other software and has been used in various research papers. 
 Whenever possible, please use the latest version from the repository::
 
 ```bash
-   pip install git+https://github.com/santhoshse7en/imdb
+pip install git+https://github.com/santhoshse7en/imdb
 ```
 
 But if you want, you can also install the latest release from PyPI::
 
 ```bash
-   pip install imdb
+pip install imbpy
 ```
 
 ## Usage
 
-Download it by clicking the green download button here on Github. Here's an example that demonstrates how to use IMDb:
+Download it by clicking the green download button here on Github. Here's an example that demonstrates how to use imdby:
 
-```bash
-> import IMDb
-> IMDb.details.title
-'Avengers: Endgame'
+```python
+# create an instance of the IMDb class
+from imdb import imdb
+
+# get a movie
+details = imdb('tt4154796')
+
+# print the names of the directors of the movie
+print('Directors:')
+for i in range(len(details.directors)):
+  print(details.directors[i])
+
+# print the genres of the movie
+print('Genres:')
+for i in range(len(details.genre)):
+  print(genre)
 ```
 
 ## Contributing
