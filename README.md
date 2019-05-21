@@ -1,3 +1,8 @@
+[![PyPI Version][pypi-v-image]][pypi-v-link]
+
+[pypi-v-image]: https://img.shields.io/pypi/v/imdby.svg 
+[pypi-v-link]: https://pypi.org/project/imdby
+
 # imdby
 
 **imdby** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, people, characters and companies.
