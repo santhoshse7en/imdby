@@ -50,6 +50,9 @@ print('Genres:')
 for i in range(len(details.genre)):
     print(details.genre[i])
 ```
+Directory of IMDb class
+
+![dir](https://user-images.githubusercontent.com/47944792/58084265-2b3bc300-7bd8-11e9-9169-cc60542593f1.PNG)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
