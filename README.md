@@ -1,7 +1,5 @@
-[![PyPI Version][pypi-v-image]][pypi-v-link]
-
-[pypi-v-image]: https://img.shields.io/pypi/v/imdby.svg 
-[pypi-v-link]: https://pypi.org/project/imdby
+[![PyPI Version](https://img.shields.io/pypi/v/imdby.svg)](https://pypi.org/project/imdby)
+[![Coverage Status](https://coveralls.io/repos/github/santhoshse7en/imdby/badge.svg?branch=master)](https://coveralls.io/github/santhoshse7en/imdby?branch=master)
 
 # imdby
 
