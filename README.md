@@ -5,6 +5,13 @@
 
 **imdby** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, people, characters and companies.
 
+| Source         | Link                                       | 
+| ---            |  ---                                       |
+| PyPI:          | https://pypi.org/project/imdby/            |
+| Repository:    | https://github.com/santhoshse7en/imdby/    | 
+| Documentation: | https://santhoshse7en.github.io/imdby_doc/ |
+
+
 ## Main features
 
 - imdby is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies.
