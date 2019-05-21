@@ -3,17 +3,17 @@
 **imdby** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, people, characters and companies.
 
 ## Main features
+## Main features
 
-- written in Python 3 (compatible with Python 2.7)
+- imdby is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies.
 
-- platform-independent
+- Platform-independent and written in Python 3 it can retrieve data from both the IMDb's web server and a local copy of the whole database.
 
-- can retrieve data from both the IMDb's web server, or a local copy of the database
+- imdby package can be very easily used by programmers and developers to provide access to the IMDb's data to their programs.
 
-- released under the terms of the MIT license
+- Some simple example scripts - useful for the end users - are included in this package;
 
 imbpy powers many other software and has been used in various research papers. _`Curious about that`_?    
-
 
 ## Installation
 
@@ -35,7 +35,7 @@ Download it by clicking the green download button here on Github. Here's an exam
 
 ```python
 # create an instance of the IMDb class
-from imdb import imdb
+from imdb.imdb import imdb
 
 # get a movie
 details = imdb('tt4154796')
