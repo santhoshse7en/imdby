@@ -1,0 +1,10 @@
+README.md
+setup.cfg
+setup.py
+imdby/__init__.py
+imdby/imdb.py
+imdby.egg-info/PKG-INFO
+imdby.egg-info/SOURCES.txt
+imdby.egg-info/dependency_links.txt
+imdby.egg-info/requires.txt
+imdby.egg-info/top_level.txt
