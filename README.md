@@ -35,7 +35,7 @@ Download it by clicking the green download button here on Github. Here's an exam
 
 ```python
 # create an instance of the IMDb class
-from imdb.imdb import imdb
+from imdb import imdb
 
 # get a movie
 details = imdb('tt4154796')
