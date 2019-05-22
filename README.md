@@ -26,6 +26,11 @@
 
 imdby powers many other software and has been used in various research papers. _`Curious about that`_?    
 
+## Dependencies
+
+* beautifulsoup4
+* selenium
+* pandas
 
 ## Installation
 
