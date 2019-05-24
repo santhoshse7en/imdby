@@ -7,20 +7,19 @@
 
 **imdby** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, people, characters and companies.
 
-| Source         | Link                                       | 
+| Source         | Link                                       |
 | ---            |  ---                                       |
 | PyPI:          | https://pypi.org/project/imdby/            |
-| Repository:    | https://github.com/santhoshse7en/imdby/    | 
+| Repository:    | https://github.com/santhoshse7en/imdby/    |
 | Documentation: | https://santhoshse7en.github.io/imdby_doc/ |
-
 
 ## Main features
 
-- imdby is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies.
+* **imdby** is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies. Sentiment Analysis for IMDb user reviews are included.
+
+- **imdby** package can be very easily used by programmers and developers to provide access to the IMDb's data to their programs.
 
 - Platform-independent and written in Python 3 it can retrieve data from both the IMDb's web server and a local copy of the whole database.
-
-- imdby package can be very easily used by programmers and developers to provide access to the IMDb's data to their programs.
 
 - Some simple example scripts - useful for the end users - are included in this package;
 
@@ -30,6 +29,9 @@ imdby powers many other software and has been used in various research papers. _
 
 * beautifulsoup4
 * selenium
+* chromedriver-binary
+* vaderSentiment
+* textblob
 * pandas
 
 ## Installation
@@ -46,7 +48,7 @@ But if you want, you can also install the latest release from PyPI::
 pip install imdby
 ```
 
-## Usage
+## A Glance
 
 Download it by clicking the green download button here on Github. Here's an example that demonstrates how to use imdby:
 
@@ -69,7 +71,7 @@ for i in range(len(details.genre)):
 ```
 Directory of IMDb class
 
-![dir](https://user-images.githubusercontent.com/47944792/58084265-2b3bc300-7bd8-11e9-9169-cc60542593f1.PNG)
+![dir](https://user-images.githubusercontent.com/47944792/58303052-eb5d2180-7e0b-11e9-82c1-14627ee73ca3.PNG)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

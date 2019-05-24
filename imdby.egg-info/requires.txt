@@ -1,2 +1,6 @@
 beautifulsoup4
 pandas
+selenium
+vaderSentiment
+textblob
+chromedriver-binary
