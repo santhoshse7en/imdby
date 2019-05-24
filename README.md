@@ -15,7 +15,7 @@
 
 ## Main features
 
-* **imdby** is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies. Sentiment Analysis for IMDb user reviews are included.
+* **imdby** is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies. Sentiment Analysis for IMDb user reviews is included.
 
 - **imdby** package can be very easily used by programmers and developers to provide access to the IMDb's data to their programs.
 

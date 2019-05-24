@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: imdby
-Version: 0.1.0
+Version: 0.1.2
 Summary: Python package to access the IMDb's database
 Home-page: https://github.com/santhoshse7en/imdby
 Author: M Santhosh Kumar
@@ -23,7 +23,7 @@ Description: [![PyPI Version](https://img.shields.io/pypi/v/imdby.svg)](https://
         
         ## Main features
         
-        * **imdby** is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies. Sentiment Analysis for IMDb user reviews are included.
+        * **imdby** is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies. Sentiment Analysis for IMDb user reviews is included.
         
         - **imdby** package can be very easily used by programmers and developers to provide access to the IMDb's data to their programs.
         

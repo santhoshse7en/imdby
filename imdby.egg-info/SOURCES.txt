@@ -12,6 +12,9 @@ imdby/parental_guide.py
 imdby/plot.py
 imdby/plot_keywords.py
 imdby/release_info.py
+imdby/search_company.py
+imdby/search_person.py
+imdby/search_title.py
 imdby/taglines.py
 imdby/technical_spec.py
 imdby/user_reviews.py
