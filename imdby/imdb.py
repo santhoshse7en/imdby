@@ -24,5 +24,5 @@ class imdb:
         cast_and_crew.__init__(self, titleid)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for data extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
+        sys.stdout.write('\r' + str("Calculating time taken for imdb basic info. data extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
         sys.stdout.flush()

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: imdby
-Version: 0.1.2
+Version: 0.1.3
 Summary: Python package to access the IMDb's database
 Home-page: https://github.com/santhoshse7en/imdby
 Author: M Santhosh Kumar

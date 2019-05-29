@@ -7,6 +7,7 @@ imdby/company.py
 imdby/critic_reviews.py
 imdby/external_sites.py
 imdby/imdb.py
+imdby/imdb_charts.py
 imdby/movie.py
 imdby/parental_guide.py
 imdby/plot.py
@@ -17,6 +18,9 @@ imdby/search_person.py
 imdby/search_title.py
 imdby/taglines.py
 imdby/technical_spec.py
+imdby/top_india_charts.py
+imdby/trending_now_in_india.py
+imdby/upcoming_releases.py
 imdby/user_reviews.py
 imdby/utils.py
 imdby.egg-info/PKG-INFO

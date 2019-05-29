@@ -1,8 +1,0 @@
-site_name: imdby
-nav:
-    - Home: index.md
-    - Installation: installation.md
-    - Usage: basic.md
-    - Development: development.md
-    - About: about.md
-theme: readthedocs
