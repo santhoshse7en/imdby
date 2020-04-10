@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Technical Spec Details
 class technical_spec:
 
@@ -10,7 +11,7 @@ class technical_spec:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.technical_spec_url = "https://www.imdb.com/title/" + str(self.titleid) + "/technical"
+        self.technical_spec_url = "https://www.imdb.com/title/%s/technical" % str(self.titleid)
         soup = BeautifulSoup(get(self.technical_spec_url).text, 'lxml')
         technical_spec = soup.select('td[class="label"]')
 
@@ -138,5 +139,4 @@ class technical_spec:
         except:
             self.imdb_technical_spec_metadata = None
 
-        sys.stdout.write('\r' + str("Techincal Spec Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rTechincal Spec Extraction Completed\r", end="\r", flush=True)

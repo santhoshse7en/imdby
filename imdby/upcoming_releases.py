@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 class upcoming_releases:
     """
     'Upcoming Releases' method shows the available region in IMDb and suggests the regions to the user.
@@ -47,45 +48,31 @@ class upcoming_releases:
         """
         returns: Upcoming Release for selected regions
         """
-        self.region_url = 'https://www.imdb.com/calendar/?region=' + str(self.country_code)
+        self.region_url = 'https://www.imdb.com/calendar/?region=%s' % self.country_code
         region_soup = BeautifulSoup(get(self.region_url).text, 'lxml')
 
         release_dates = region_soup.select_one('#pagecontent').select('h4')
-        names, ids, dates, years = [], [], [], []
+        movie_name, title_id, release_date, year = [None] * 4
+        self.upcoming_releases_df = pd.DataFrame(columns=['Release Date', 'Movie Title' , 'ID' , 'Years' ])
 
         for item in release_dates:
 
             try:
                 movies = item.findNext('ul').select('a')
-                year = item.findNext('ul').select('li')
-                try:
-                    dates.append(item.text)
-                except:
-                    dates.append(None)
-
-                try:
-                    names.append([item.text.strip() for item in movies])
-                except:
-                    names.append(None)
-
-                try:
-                    ids.append([item['href'][7:16] for item in movies])
-                except:
-                    ids.append(None)
-
-                try:
-                    years.append([re.findall("\d+", item.contents[2].strip())[0] for item in year])
-                except:
-                    years.append(None)
+                years = item.findNext('ul').select('li')
+                
+                for i in zip(movies, years):
+                    release_date = item.text
+                    movie_name = i[0].text.strip()
+                    title_id = i[0]['href'][7:16]
+                    year = re.findall("\d+", i[1].contents[2].strip())[0]
+                    self.upcoming_releases_df.loc[len(self.upcoming_releases_df)] = [release_date, movie_name, title_id, year]
 
             except Exception as es:
                 print("No! release data found on selected region"+"{0} :".format(type(es)), es)
                 sys.exit(0)
 
-        self.upcoming_releases_df = pd.DataFrame({'Release Date' : dates, 'Movie Title' : names, 'ID' : ids, 'Years' : years})
-
-        sys.stdout.write('\r' + str("Upcoming Releases Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rUpcoming Releases Extraction Completed\r", end="\r", flush=True)
 
 # main class which passes the titleid to indiviual class
 class imdb:
@@ -94,5 +81,4 @@ class imdb:
         upcoming_releases.__init__(self)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for upcoming releases extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\rCalculating time taken for upcoming releases extraction : %s  seconds" % (time_delta.seconds), end="\r", flush=True)

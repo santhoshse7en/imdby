@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Plot Details
 class plot:
 
@@ -10,7 +11,7 @@ class plot:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.plot_url = "https://www.imdb.com/title/" + str(self.titleid) + "/plotsummary"
+        self.plot_url = "https://www.imdb.com/title/%s/plotsummary" % self.titleid
         soup = BeautifulSoup(get(self.plot_url).text, 'lxml')
 
         """
@@ -50,5 +51,4 @@ class plot:
         except:
             self.imdb_plot_metadata = None
 
-        sys.stdout.write('\r' + str("Plot Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rPlot Extraction Completed\r", end="\r", flush=True)

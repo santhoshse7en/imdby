@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb User Reviews
 class user_reviews:
 
@@ -96,5 +97,4 @@ class imdb:
         user_reviews.__init__(self, titleid)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for user review extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\rCalculating time taken for user review extraction : %s  seconds" % (time_delta.seconds), end="\r", flush=True)

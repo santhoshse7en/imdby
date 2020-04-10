@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Release Info
 class release_info:
 
@@ -10,7 +11,7 @@ class release_info:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.release_info_url = "https://www.imdb.com/title/" + str(self.titleid) + "/releaseinfo"
+        self.release_info_url = "https://www.imdb.com/title/%s/releaseinfo" % self.titleid 
         soup = BeautifulSoup(get(self.release_info_url).text, 'lxml')
 
         """
@@ -131,5 +132,4 @@ class release_info:
         except:
             self.imdb_release_info_metadata = None
 
-        sys.stdout.write('\r' + str("Release Info Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rRelease Info Extraction Completed\r", end="\r", flush=True)

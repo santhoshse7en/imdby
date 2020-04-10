@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb MovieDetails
 class movie:
 
@@ -10,7 +11,7 @@ class movie:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.movie_url = "https://www.imdb.com/title/" + str(self.titleid)
+        self.movie_url = "https://www.imdb.com/title/%s" % str(self.titleid)
         soup = BeautifulSoup(get(self.movie_url).text, 'lxml')
 
         """
@@ -97,7 +98,7 @@ class movie:
         :returns: Movie Poster URL if available.
         """
         try:
-            self.movie_poster_url = 'https://www.imdb.com'+ soup.select_one('.poster').a['href']
+            self.movie_poster_url = 'https://www.imdb.com%s' % soup.select_one('.poster').a['href']
         except:
             self.movie_poster_url = None
 
@@ -130,5 +131,4 @@ class movie:
         except:
             self.imdb_movie_metadata = None
 
-        sys.stdout.write('\r' + str("Basic Movie Info Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rBasic Movie Info Extraction Completed\r", end="\r", flush=True)

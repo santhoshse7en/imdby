@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Plot Keywords Details
 class plot_keywords:
 
@@ -10,7 +11,7 @@ class plot_keywords:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.plot_keywords_url = "https://www.imdb.com/title/" + str(self.titleid) + "/keywords"
+        self.plot_keywords_url = "https://www.imdb.com/title/%s/keywords" % self.titleid 
         soup = BeautifulSoup(get(self.plot_keywords_url).text, 'lxml')
 
         """
@@ -41,5 +42,4 @@ class plot_keywords:
         except:
             self.imdb_plot_Keywords_metadata = None
 
-        sys.stdout.write('\r' + str("Plot Keywords Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rPlot Keywords Extraction Completed\r", end="\r", flush=True)

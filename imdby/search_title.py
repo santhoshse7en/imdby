@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 class title_name:
     """
     'IMDbID' method takes a title name, searches for the similar title names available in IMDb.
@@ -15,7 +16,7 @@ class title_name:
 
     def __init__(self, text):
         self.entered_text = text
-        self.url = 'https://www.imdb.com/find?q=' + str(''.join(self.entered_text.split())) + '&s=tt&ref_=fn_al_tt_mr'
+        self.url = 'https://www.imdb.com/find?q=%s&s=tt&ref_=fn_al_tt_mr' % ''.join(self.entered_text.split())
         soup = BeautifulSoup(get(self.url).text, 'lxml')
 
         suggestions, names, imdbids = [], [], []
@@ -57,5 +58,4 @@ class imdb:
         title_name.__init__(self, text)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for external sites extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\rCalculating time taken for search title extraction : %s  seconds\r" % (time_delta.seconds), end="\r", flush=True)

@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Charts Details
 class imdb_charts:
 
@@ -467,8 +468,7 @@ class imdb_charts:
         except:
             self.top_rated_english_movies_df = None
 
-        sys.stdout.write('\r' + str("IMDb Charts Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rIMDb Charts Extraction Completed\r", end="\r", flush=True)
 
 # main class which passes the titleid to indiviual class
 class imdb:
@@ -477,5 +477,4 @@ class imdb:
         imdb_charts.__init__(self)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for IMDb Charts extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\r Calculating time taken for IMDb Charts extraction : %s  seconds\r" % (time_delta.seconds), end="\r", flush=True)

@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Trending Now in India Details
 class trending_now_in_india:
 
@@ -11,12 +12,12 @@ class trending_now_in_india:
     def __init__(self):
         base_url = "https://www.imdb.com/india/"
 
-        self.upcoming_movies_url =  base_url + "upcoming"
-        self.popular_tamil_url = base_url + "tamil"
-        self.popular_telugu_url = base_url + "telugu"
-        self.popular_india_url = base_url + "released"
-        self.popular_global_url = base_url + "global"
-        self.popular_hindi_url = base_url + "hindi"
+        self.upcoming_movies_url =  "%supcoming" % base_url
+        self.popular_tamil_url = "%stamil" % base_url
+        self.popular_telugu_url = "%stelugu" % base_url
+        self.popular_india_url = "%sreleased" % base_url
+        self.popular_global_url = "%sglobal" % base_url
+        self.popular_hindi_url = "%shindi" % base_url
 
         upcoming_soup = BeautifulSoup(get(self.upcoming_movies_url).text, 'lxml')
         popular_tamil_soup = BeautifulSoup(get(self.popular_tamil_url).text, 'lxml')
@@ -133,8 +134,7 @@ class trending_now_in_india:
         except:
             self.popular_hindi_movies_df = None
 
-        sys.stdout.write('\r' + str("Trending Now in India Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rTrending Now in India Extraction Completed\r", end="\r", flush=True)
 
 # main class which passes the titleid to indiviual class
 class imdb:
@@ -143,5 +143,4 @@ class imdb:
         trending_now_in_india.__init__(self)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for Trending Now in India extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\rCalculating time taken for trending now in india extraction : %s  seconds\r" % (time_delta.seconds), end="\r", flush=True)

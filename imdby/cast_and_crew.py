@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Full Cast & Crew Details
 class cast_and_crew:
 
@@ -9,7 +10,7 @@ class cast_and_crew:
     """
     def __init__(self, titleid):
         self.titleid = titleid
-        self.cast_and_crew_url = "https://www.imdb.com/title/" + str(self.titleid) + "/fullcredits"
+        self.cast_and_crew_url = "https://www.imdb.com/title/%s/fullcredits" % self.titleid
         soup = BeautifulSoup(get(self.cast_and_crew_url).text, 'lxml')
 
         """
@@ -405,5 +406,4 @@ class cast_and_crew:
         except:
             self.imdb_cast_metadata = None
 
-        sys.stdout.write('\r' + str("Full Cast & Crew Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rFull Cast & Crew Extraction Completed\r", end="\r", flush=True)

@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves External Sites Details
 class external_sites:
 
@@ -10,7 +11,7 @@ class external_sites:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.external_sites_url = "https://www.imdb.com/title/" + str(self.titleid) + "/externalsites"
+        self.external_sites_url = "https://www.imdb.com/title/%s/externalsites" % self.titleid 
         soup = BeautifulSoup(get(self.external_sites_url).text, 'lxml')
 
         """
@@ -30,7 +31,7 @@ class external_sites:
             for item in official_sites:
                 try:
                     titles.append(item.text.strip())
-                    urls.append(get('https://www.imdb.com' + item.a['href']).url)
+                    urls.append(get('https://www.imdb.com%s' % item.a['href']).url)
                 except:
                     titles.append(None)
                     urls.append(None)
@@ -63,7 +64,7 @@ class external_sites:
             for item in miscellaneous_sites:
                 try:
                     titles.append(item.text.strip())
-                    urls.append(get('https://www.imdb.com' + item.a['href']).url)
+                    urls.append(get('https://www.imdb.com%s' % item.a['href']).url)
                 except:
                     titles.append(None)
                     urls.append(None)
@@ -96,7 +97,7 @@ class external_sites:
             for item in photographs_sites:
                 try:
                     titles.append(item.text.strip())
-                    urls.append(get('https://www.imdb.com' + item.a['href']).url)
+                    urls.append(get('https://www.imdb.com%s' % item.a['href']).url)
                 except:
                     titles.append(None)
                     urls.append(None)
@@ -129,7 +130,7 @@ class external_sites:
             for item in videos_clips_and_trailers_sites:
                 try:
                     titles.append(item.text.strip())
-                    urls.append(get('https://www.imdb.com' + item.a['href']).url)
+                    urls.append(get('https://www.imdb.com%s' % item.a['href']).url)
                 except:
                     titles.append(None)
                     urls.append(None)
@@ -181,5 +182,4 @@ class imdb:
         external_sites.__init__(self, titleid)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for external sites extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\rCalculating time taken for external sites extraction : %s  seconds\r" % (time_delta.seconds), end="\r", flush=True)

@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Top India Charts Details
 class top_india_charts:
 
@@ -11,10 +12,10 @@ class top_india_charts:
     def __init__(self):
         base_url = "https://www.imdb.com/india/"
 
-        self.top_rated_indian_movies_url = base_url + "top-rated-indian-movies"
-        self.top_rated_tamil_movies_url = base_url + "top-rated-tamil-movies"
-        self.top_rated_telugu_movies_url = base_url + "top-rated-telugu-movies"
-        self.top_rated_malayalam_movies_url = base_url + "top-rated-malayalam-movies"
+        self.top_rated_indian_movies_url =  "%stop-rated-indian-movies" % base_url
+        self.top_rated_tamil_movies_url = "%stop-rated-tamil-movies" % base_url
+        self.top_rated_telugu_movies_url = "%stop-rated-telugu-movies" % base_url
+        self.top_rated_malayalam_movies_url = "%stop-rated-malayalam-movies" % base_url
 
         indian_soup = BeautifulSoup(get(self.top_rated_indian_movies_url).text, 'lxml')
         tamil_soup = BeautifulSoup(get(self.top_rated_tamil_movies_url).text, 'lxml')
@@ -278,8 +279,7 @@ class top_india_charts:
         except:
             self.top_rated_malayalam_movies_df = None
 
-        sys.stdout.write('\r' + str("Top India Charts Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rTop India Charts Extraction Completed\r", end="\r", flush=True)
 
 # main class which passes the titleid to indiviual class
 class imdb:
@@ -288,5 +288,4 @@ class imdb:
         top_india_charts.__init__(self)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for Top India Charts extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\rCalculating time taken for top india charts extraction : %s  seconds\r" % (time_delta.seconds), end="\r", flush=True)

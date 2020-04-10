@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Taglines
 class taglines:
 
@@ -41,5 +42,4 @@ class taglines:
         except:
             self.imdb_taglines_metadata = None
 
-        sys.stdout.write('\r' + str("Taglines Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rTaglines Extraction Completed\r", end="\r", flush=True)

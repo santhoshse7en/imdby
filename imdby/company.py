@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Company Credits Details
 class company:
 
@@ -9,7 +10,7 @@ class company:
     """
     def __init__(self, titleid):
         self.titleid = titleid
-        self.company_url = "https://www.imdb.com/title/" + str(self.titleid) + "/companycredits"
+        self.company_url = "https://www.imdb.com/title/%s/companycredits" % self.titleid 
         soup = BeautifulSoup(get(self.company_url).text, 'lxml')
 
         """
@@ -165,5 +166,4 @@ class company:
         except:
             self.imdb_company_metadata = None
 
-        sys.stdout.write('\r' + str("Company Credits Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rCompany Credits Extraction Completed\r", end="\r", flush=True)

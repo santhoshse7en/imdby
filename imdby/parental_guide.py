@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Parental Guide Details
 class parental_guide:
 
@@ -10,7 +11,7 @@ class parental_guide:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.parental_guide_url = "https://www.imdb.com/title/" + str(self.titleid) + "/parentalguide"
+        self.parental_guide_url = "https://www.imdb.com/title/%s/parentalguide" % self.titleid
         soup = BeautifulSoup(get(self.parental_guide_url).text, 'lxml')
 
         """
@@ -195,5 +196,4 @@ class parental_guide:
         except:
             self.imdb_parental_guide_metadata = None
 
-        sys.stdout.write('\r' + str("Parental Guide Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rParental Guide Extraction Completed\r", end="\r", flush=True)

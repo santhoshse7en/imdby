@@ -1,5 +1,6 @@
 from imdby.utils import *
 
+
 # Retrieves IMDb Critic Reviews
 class critic_reviews:
 
@@ -11,7 +12,7 @@ class critic_reviews:
 
     def __init__(self, titleid):
         self.titleid = titleid
-        self.user_reviews_url = "https://www.imdb.com/title/" + str(self.titleid) + "/externalreviews"
+        self.user_reviews_url = "https://www.imdb.com/title/%s/externalreviews" % self.titleid
 
         # Creating soup for the website
         soup = BeautifulSoup(get(self.user_reviews_url).text, 'lxml')
@@ -42,14 +43,13 @@ class critic_reviews:
             for item in links:
                 try:
                     self.critic_reviews_df.loc[len(self.critic_reviews_df)] = [item.a.text.strip(),
-                                                                               get('https://www.imdb.com' + item.a['href']).url]
+                                                                               get('https://www.imdb.com%s' % item.a['href']).url]
                 except:
                     pass
         except:
             self.critic_reviews_df = None
 
-        sys.stdout.write('\r' + str("Critic Reviews Extraction Completed") +  '\r')
-        sys.stdout.flush()
+        print("\rCritic Reviews Extraction Completed\r", end="\r", flush=True)
 
 # main class which passes the titleid to indiviual class
 class imdb:
@@ -58,5 +58,4 @@ class imdb:
         critic_reviews.__init__(self, titleid)
 
         time_delta = datetime.now() - start_time
-        sys.stdout.write('\r' + str("Calculating time taken for critic reviews extraction") + ":  " + str(time_delta.seconds) +  "  seconds" +  '\r')
-        sys.stdout.flush()
+        print("\rCalculating time taken for critic reviews extraction : %s  seconds\r" % (time_delta.seconds), end="\r", flush=True)
