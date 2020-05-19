@@ -1,8 +1,0 @@
-beautifulsoup4
-selenium
-vaderSentiment
-chromedriver-binary
-textblob
-pandas
-setuptools
-twine
