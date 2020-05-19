@@ -1,5 +1,5 @@
 from imdby.utils.config import base_uri, imdb_uris, tag_search
-from imdby.utils.helper_function import (catch, catch_dict, catch_list,
+from imdby.utils.helpers import (catch, catch_dict, catch_list,
                                      dataframe_data, unicode, company_data)
 from imdby.utils.utils import BeautifulSoup, get, pd, re
 

@@ -1,5 +1,5 @@
 from imdby.utils.config import base_uri, search_imdb_id
-from imdby.utils.helper_function import unicode
+from imdby.utils.helpers import unicode
 from imdby.utils.utils import BeautifulSoup, get, re, sys, unidecode
 
 

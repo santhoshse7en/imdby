@@ -1,5 +1,5 @@
 from imdby.utils.config import base_uri, imdb_uris
-from imdby.utils.helper_function import catch, top_250, top_box_office
+from imdby.utils.helpers import catch, top_250, top_box_office
 from imdby.utils.utils import BeautifulSoup, get, pd, re
 
 

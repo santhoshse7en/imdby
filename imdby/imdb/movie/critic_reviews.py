@@ -1,26 +1,28 @@
-from imdby.utils.config import base_uri, imdb_uris
-from imdby.utils.helper_function import catch, catch_list, dataframe_data, unicode
+from imdby.utils.config import base_uri, imdb_uris, tag_search
+from imdby.utils.helpers import catch, catch_dict, critic_df, digits, unicode
 from imdby.utils.utils import BeautifulSoup, get, pd, re
 
 
-# Retrieves IMDb Critic Reviews
+# Retrieves IMDb Plot Details
 class critic_reviews:
 
     """
-    Collects critic reviews of the multi media content in IMDb when title_id is given.
-    :param user reviews: Unique identification title_id for every multi media content in IMDb.
-    :returns: Returns all the user reviews.
+    Collects IMDb Ratings Details of the multi-media content in IMDb when title_id is given.
+    :param title_id: Unique identification for every multimedia in IMdb.
     """
 
     def __init__(self, title_id):
         self.title_id = title_id
-        self.user_reviews_url = imdb_uris['externalreviews'] % self.title_id
-
-        # Creating soup for the website
-        soup = BeautifulSoup(get(self.user_reviews_url).text, 'lxml')
+        self.ratings_uri = imdb_uris["criticreviews"] % self.title_id
+        soup = BeautifulSoup(get(self.ratings_uri).text, 'lxml')
 
         """
-        :returns: movie title if available.
+        :returns: Holds page Info tags
+        """
+        critic_tag = soup.select('tr[itemprop="reviews"]')
+
+        """
+        :returns: Movie Title
         """
         movie_tag = soup.select_one('h3[itemprop="name"]')
         self.title = catch(lambda: unicode(movie_tag.a.get_text()))
@@ -30,29 +32,6 @@ class critic_reviews:
             r"\d+", unicode(movie_tag.select_one('.nobr').get_text()))[0]))
 
         """
-        :returns: total critic reviews if available.
+        :returns: Critic Review Demographics
         """
-        self.critic_reviews_count = catch(lambda: int(
-            ''.join(i for i in soup.select_one('.desc').text if i.isdigit())))
-
-        """
-        :returns: critics reviews link if available.
-        """
-        try:
-            links = soup.select_one(
-                "#external_reviews_content").findNext("ul").select("li")
-            self.critic_reviews_df = pd.DataFrame(
-                columns=['Title', 'Critic', 'IMDb_URI', 'URI'])
-
-            for item in links:
-                text = catch(lambda: unicode(item.get_text()))
-                start = catch(lambda: text.find('['))
-                end = catch(lambda: text.find(']'))
-
-                self.critic_reviews_df.loc[len(self.critic_reviews_df)] = [catch(lambda: unicode(text[:start-1])),
-                                                                           catch(lambda: unicode(text[start+1:end])),
-                                                                           catch(lambda: unicode('%s%s' % (base_uri, item.a['href'][1:]))),
-                                                                           catch(lambda: get('%s%s' % (base_uri, item.a['href'][1:])).url)]
-            self.critic_reviews_df = dataframe_data(self.critic_reviews_df)
-        except:
-            self.critic_reviews_df = None
+        self.critic_reviews_df = catch(lambda: critic_df(critic_tag))

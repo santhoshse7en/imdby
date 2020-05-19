@@ -1,6 +1,7 @@
 # Movie Related Information
 from imdby.imdb.movie.company import company
 from imdby.imdb.movie.critic_reviews import critic_reviews
+from imdby.imdb.movie.external_reviews import external_reviews
 from imdby.imdb.movie.external_sites import external_sites
 from imdby.imdb.movie.full_cast_and_crew import full_cast_and_crew
 from imdby.imdb.movie.imdb_charts import imdb_charts

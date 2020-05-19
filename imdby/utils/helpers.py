@@ -393,6 +393,19 @@ def rating_df(targeted_tag):
     rating_df = dataframe_data(rating_df)
     return rating_df
 
+def critic_df(targeted_tag):
+    
+    df = pd.DataFrame(columns=['Rating Value', 'Publisher', 'Author', 'Publisher URI', 'Summary'])
+    
+    for tag in targeted_tag:
+        df.loc[len(df)] = [catch(lambda: unicode(tag.select_one('span[itemprop="ratingValue"]').get_text())),
+                          catch(lambda: unicode(tag.select('span[itemprop="name"]')[0].get_text())),
+                          catch(lambda: unicode(tag.select('span[itemprop="name"]')[1].get_text())),
+                          catch(lambda: unicode(tag.a['href'])),
+                          catch(lambda: unicode(tag.select_one('div[class="summary"]').get_text()))]
+        
+    df = dataframe_data(df)
+    return df
 
 def unicode(text: str) -> bool:
     return unidecode.unidecode(text).strip()

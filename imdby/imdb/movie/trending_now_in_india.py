@@ -1,5 +1,5 @@
 from imdby.utils.config import base_uri, imdb_uris
-from imdby.utils.helper_function import catch, trending_now, trending_now_df
+from imdby.utils.helpers import catch, trending_now, trending_now_df
 from imdby.utils.utils import BeautifulSoup, get
 
 
