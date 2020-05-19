@@ -10,14 +10,14 @@ from __future__ import print_function
 # Always prefer setuptools over distutils
 import setuptools
 
-keywords = ['imdby', 'imdb', 'movie', 'people', 'database', 'cinema', 'film', 'person',
+keywords = ['imdb_py', 'imdb', 'movie', 'people', 'database', 'cinema', 'film', 'person',
             'cast', 'actor', 'actress', 'director', 'sql', 'character',
             'company', 'package', 'plain text data files',
             'keywords', 'top250', 'bottom100', 'xml', 'bs4']
 
 setuptools.setup(
-    name="imdby",
-    version="0.1.5",
+    name="imdb_py",
+    version="0.1.6",
     python_requires='>=3.5',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
@@ -27,7 +27,7 @@ setuptools.setup(
     url="https://github.com/santhoshse7en/imdby",
     platforms = 'any',
     keywords = keywords,
-    install_requires=['beautifulsoup4', 'pandas', 'selenium', 'vaderSentiment', 'textblob', 'chromedriver-binary'],
+    install_requires=['beautifulsoup4', 'pandas', 'selenium', 'vaderSentiment', 'textblob', 'chromedriver-binary', 'unidecode'],
     packages=setuptools.find_packages(),
     classifiers=['Development Status :: 4 - Beta',
           'Intended Audience :: End Users/Desktop',

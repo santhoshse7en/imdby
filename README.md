@@ -23,8 +23,6 @@
 
 - Some simple example scripts - useful for the end users - are included in this package;
 
-imdby powers many other software and has been used in various research papers. _`Curious about that`_?    
-
 ## Dependencies
 
 * beautifulsoup4
