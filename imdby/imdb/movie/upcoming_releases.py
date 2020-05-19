@@ -1,7 +1,7 @@
-from imdb_py.config import base_uri, imdb_uris
-from imdb_py.helper_function import (catch, dataframe_data, trending_now,
+from imdby.utils.config import base_uri, imdb_uris
+from imdby.utils.helper_function import (catch, dataframe_data, trending_now,
                                      trending_now_df, unicode)
-from imdb_py.utils import BeautifulSoup, get, pd, re, sys
+from imdby.utils.utils import BeautifulSoup, get, pd, re, sys
 
 
 class upcoming_releases:

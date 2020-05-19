@@ -1,6 +1,6 @@
-from imdb_py.config import base_uri, imdb_uris, tag_search
-from imdb_py.helper_function import catch, catch_list, catch_dict, dataframe_data, unicode, external_site
-from imdb_py.utils import BeautifulSoup, get, pd, re
+from imdby.utils.config import base_uri, imdb_uris, tag_search
+from imdby.utils.helper_function import catch, catch_list, catch_dict, dataframe_data, unicode, external_site
+from imdby.utils.utils import BeautifulSoup, get, pd, re
 
 
 # Retrieves External Sites Details

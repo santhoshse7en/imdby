@@ -1,6 +1,6 @@
-from imdb_py.config import base_uri, search_imdb_id
-from imdb_py.helper_function import unicode
-from imdb_py.utils import BeautifulSoup, get, re, sys, unidecode
+from imdby.utils.config import base_uri, search_imdb_id
+from imdby.utils.helper_function import unicode
+from imdby.utils.utils import BeautifulSoup, get, re, sys, unidecode
 
 
 class search_character_id:

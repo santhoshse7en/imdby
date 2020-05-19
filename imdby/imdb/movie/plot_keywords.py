@@ -1,6 +1,6 @@
-from imdb_py.config import base_uri, imdb_uris
-from imdb_py.helper_function import catch, catch_dict, catch_list, unicode
-from imdb_py.utils import BeautifulSoup, get, re
+from imdby.utils.config import base_uri, imdb_uris
+from imdby.utils.helper_function import catch, catch_dict, catch_list, unicode
+from imdby.utils.utils import BeautifulSoup, get, re
 
 
 # Retrieves IMDb Plot Keywords Details

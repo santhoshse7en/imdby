@@ -1,6 +1,6 @@
-from imdb_py.config import base_uri, imdb_uris
-from imdb_py.helper_function import catch, top_250
-from imdb_py.utils import BeautifulSoup, get, pd, re
+from imdby.utils.config import base_uri, imdb_uris
+from imdby.utils.helper_function import catch, top_250
+from imdby.utils.utils import BeautifulSoup, get, pd, re
 
 
 # Retrieves IMDb Top India Charts Details

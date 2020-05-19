@@ -1,5 +1,5 @@
-from imdby.config import base_uri
-from imdby.utils import TextBlob, pd, re, unidecode
+from imdby.utils.config import base_uri
+from imdby.utils.utils import TextBlob, pd, re, unidecode
 
 
 def catch(func, handle=lambda e: e, *args, **kwargs):

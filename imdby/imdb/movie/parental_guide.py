@@ -1,8 +1,8 @@
-from imdb_py.config import base_uri, imdb_uris, tag_search
-from imdb_py.helper_function import (adivsory_satus, advisory_reviews, catch,
+from imdby.utils.config import base_uri, imdb_uris, tag_search
+from imdby.utils.helper_function import (adivsory_satus, advisory_reviews, catch,
                                      catch_dict, catch_list, dataframe_data,
                                      unicode)
-from imdb_py.utils import BeautifulSoup, get, pd, re
+from imdby.utils.utils import BeautifulSoup, get, pd, re
 
 
 # Retrieves IMDb Parental Guide Details
