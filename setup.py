@@ -4,19 +4,19 @@ https://packaging.python.org/guides/distributing-packages-using-setuptools/
 https://github.com/santhoshse7en/imdby
 """
 # -*- encoding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import print_function
+from __future__ import absolute_import, print_function
 
 # Always prefer setuptools over distutils
-import setuptools
+from distutils.core import setup
+from setuptools import find_packages
 
-keywords = ['imdb_py', 'imdb', 'movie', 'people', 'database', 'cinema', 'film', 'person',
-            'cast', 'actor', 'actress', 'director', 'sql', 'character',
-            'company', 'package', 'plain text data files',
-            'keywords', 'top250', 'bottom100', 'xml', 'bs4']
+keywords = ['imdby', 'imdb', 'movie', 'people', 'database', 'cinema', 'film', 'person',
+            'cast', 'actor', 'actress', 'director', 'sql', 'character', 'critics', 'users',
+            'company', 'package', 'plain text data files', 'event', 'news', 'character',
+            'keywords', 'top250', 'bottom100', 'xml', 'bs4', 'lxml', 'upcoming']
 
-setuptools.setup(
-    name="imdb_py",
+setup(
+    name="imdby",
     version="0.1.6",
     python_requires='>=3.5',
     long_description=open('README.md').read(),
@@ -25,19 +25,20 @@ setuptools.setup(
     author_email="santhoshse7en@gmail.com",
     description="Python package to access the IMDb's database",
     url="https://github.com/santhoshse7en/imdby",
-    platforms = 'any',
-    keywords = keywords,
-    install_requires=['beautifulsoup4', 'pandas', 'selenium', 'vaderSentiment', 'textblob', 'chromedriver-binary', 'unidecode'],
-    packages=setuptools.find_packages(),
+    platforms='any',
+    keywords=keywords,
+    install_requires=['beautifulsoup4', 'pandas', 'selenium',
+                      'vaderSentiment', 'textblob', 'chromedriver-binary', 'unidecode'],
+    packages=find_packages(),
+    entry_points={'console_scripts': ['imdb=imdby.imdb.imdb:main']},
     classifiers=['Development Status :: 4 - Beta',
-          'Intended Audience :: End Users/Desktop',
-          'Intended Audience :: Developers',
-          'Intended Audience :: System Administrators',
-          'License :: OSI Approved :: MIT License',
-          'Operating System :: OS Independent',
-          'Programming Language :: Python',
-          'Topic :: Communications :: Email',
-          'Topic :: Office/Business',
-          'Topic :: Software Development :: Bug Tracking',
-          ],
-)
+                 'Intended Audience :: End Users/Desktop',
+                 'Intended Audience :: Developers',
+                 'Intended Audience :: System Administrators',
+                 'License :: OSI Approved :: MIT License',
+                 'Operating System :: OS Independent',
+                 'Programming Language :: Python',
+                 'Topic :: Communications :: Email',
+                 'Topic :: Office/Business',
+                 'Topic :: Software Development :: Bug Tracking',
+                 ],)

@@ -5,7 +5,7 @@
 
 # imdby
 
-**imdby** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, people, characters and companies.
+**imdby** is a Python package useful to retrieve and manage the data of the [IMDb](https://www.imdb.com/) movie database about movies, person, characters, companies, events and news.
 
 | Source         | Link                                       |
 | ---            |  ---                                       |
@@ -15,13 +15,18 @@
 
 ## Main features
 
-* **imdby** is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, people, characters and companies. Sentiment Analysis for IMDb user reviews is included.
+* **imdby** is a Python package useful to retrieve and manage the data of the IMDb movie database about movies, person, characters, companies, events and news. 
 
-- **imdby** package can be very easily used by programmers and developers to provide access to the IMDb's data to their programs.
+- Sentiment Analysis for IMDb user reviews is included.
 
-- Platform-independent and written in Python 3 it can retrieve data from both the IMDb's web server and a local copy of the whole database.
+- written in Python 3 (compatible with Python 2.7)
 
-- Some simple example scripts - useful for the end users - are included in this package;
+- platform-independent
+
+- can retrieve data from both the IMDb's web server, or a local copy of the database
+
+- simple and complete API
+
 
 ## Dependencies
 
@@ -34,13 +39,13 @@
 
 ## Installation
 
-Whenever possible, please use the latest version from the repository::
+Whenever possible, please use the latest version from the repository:
 
 ```bash
 pip install git+https://github.com/santhoshse7en/imdb
 ```
 
-But if you want, you can also install the latest release from PyPI::
+But if you want, you can also install the latest release from PyPI:
 
 ```bash
 pip install imdby
@@ -52,24 +57,27 @@ Download it by clicking the green download button here on Github. Here's an exam
 
 ```python
 # create an instance of the IMDb class
-from imdby.imdb import imdb
+from imdb.imdb import IMDb
+
+ia = IMDb()
 
 # get a movie
-details = imdb('tt4154796')
+cast = ia.full_cast_and_crew('tt4154796')
 
 # print the names of the directors of the movie
 print('Directors:')
-for i in range(len(details.directors)):
-    print(details.directors[i])
+for director in cast.directors:
+    print(director)
 
-# print the genres of the movie
-print('Genres:')
-for i in range(len(details.genre)):
-    print(details.genre[i])
+# search for a person name
+people = ia.search_person('Simon Baker')
+print(people.person_id, people.person_name)
 ```
-Directory of IMDb class
 
-![dir](https://user-images.githubusercontent.com/47944792/58303052-eb5d2180-7e0b-11e9-82c1-14627ee73ca3.PNG)
+## Getting help
+Please refer to the [support](https://imdby.github.io/support/) page on the [project homepage](https://imdby.github.io/) and to the the online documentation on [Read The Docs](https://imdby.readthedocs.io/).
+
+The sources are available on [GitHub](https://github.com/santhoshse7en/imdby).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
