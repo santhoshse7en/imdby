@@ -106,7 +106,3 @@ class IMDb:
 
     def user_reviews(self, title_id, remove_spoiler):
         return user_reviews(title_id, remove_spoiler)
-
-
-def main():
-    IMDb()

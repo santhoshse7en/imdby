@@ -1,10 +1,10 @@
 from imdb.utils.config import base_uri, imdb_uris
-from imdb.utils.helpers import (catch, catch_list, review_df,
-                                     sentiment_textblob, unicode, digits)
+from imdb.utils.helpers import (catch, digits, review_df, sentiment_textblob,
+                                unicode)
 from imdb.utils.utils import (BeautifulSoup, By, Options,
-                           SentimentIntensityAnalyzer, WebDriverWait,
-                           chromedriver_binary, ec, get, pd, re, sys, time,
-                           webdriver)
+                              SentimentIntensityAnalyzer, WebDriverWait,
+                              chromedriver_binary, ec, get, pd, re, sys, time,
+                              webdriver)
 
 
 # Retrieves IMDb User Reviews
@@ -32,17 +32,19 @@ class user_reviews:
         """
         :returns: movie title if available.
         """
-        movie_tag = soup.select_one('h3[itemprop="name"]')
-        self.title = catch(lambda: unicode(movie_tag.a.get_text()))
-        self.title_url = catch(lambda: unicode(
+        movie_tag = catch(
+            'None', lambda: soup.select_one('h3[itemprop="name"]'))
+        self.title = catch('None', lambda: unicode(movie_tag.a.get_text()))
+        self.title_url = catch('None', lambda: unicode(
             '%s%s' % (base_uri, movie_tag.a['href'][1:])))
-        self.year = catch(lambda: int(re.findall(
+        self.year = catch('None', lambda: int(re.findall(
             r"\d+", unicode(movie_tag.select_one('.nobr').get_text()))[0]))
 
         # for collection of number of reviews
-        reviews_count = digits(soup.select_one('div.header').span.text)
+        reviews_count = catch('None', lambda: digits(
+            soup.select_one('div.header').span.text))
 
-        maxclicks = int(reviews_count)//25
+        maxclicks = catch('None', lambda: int(reviews_count)//25)
 
         options = Options()
         options.add_argument("--headless")
@@ -72,10 +74,11 @@ class user_reviews:
         analyser = SentimentIntensityAnalyzer()
         neu_sum, neg_sum, compound_sum, pos_sum, count = [0] * 5
 
-        self.user_reviews_df = catch(lambda: review_df(analyser, container))
+        self.user_reviews_df = catch(
+            'None', lambda: review_df(analyser, container))
 
-        self.user_reviews = catch_list(
-            lambda: self.user_reviews_df.User_Reviews.tolist())
+        self.user_reviews = catch(
+            'list', lambda: self.user_reviews_df.User_Reviews.tolist())
 
         for review in self.user_reviews:
             count += 1
@@ -85,5 +88,5 @@ class user_reviews:
             pos_sum += score['pos']
 
         if count:
-            self.final_sentiment_scores = catch(lambda: {"neu": round(neu_sum / count, 3), "neg": round(
+            self.final_sentiment_scores = catch('None', lambda: {"neu": round(neu_sum / count, 3), "neg": round(
                 neg_sum / count, 3), "pos": round(pos_sum / count, 3), "compound": round(compound_sum / count, 3)})

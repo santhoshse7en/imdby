@@ -36,34 +36,34 @@ class trending_now_in_india:
         :returns: Upcoming DataFrame
         """
         self.upcoming_movies_df = catch(
-            lambda: trending_now_df(trending_now(upcoming_soup)))
+            'None', lambda: trending_now_df(trending_now(upcoming_soup)))
 
         """
         :returns: popular_tamil_movies DataFrame
         """
         self.popular_tamil_movies_df = catch(
-            lambda: trending_now_df(trending_now(popular_tamil_soup)))
+            'None', lambda: trending_now_df(trending_now(popular_tamil_soup)))
 
         """
         :returns: popular_telugu_movies DataFrame
         """
         self.popular_telugu_movies_df = catch(
-            lambda: trending_now_df(trending_now(popular_telugu_soup)))
+            'None', lambda: trending_now_df(trending_now(popular_telugu_soup)))
 
         """
         :returns: Popular India DataFrame
         """
         self.popular_india_movies_df = catch(
-            lambda: trending_now_df(trending_now(popular_india_soup)))
+            'None', lambda: trending_now_df(trending_now(popular_india_soup)))
 
         """
         :returns: Poppular Global DataFrame
         """
         self.popular_global_movies_df = catch(
-            lambda: trending_now_df(trending_now(popular_global_soup)))
+            'None', lambda: trending_now_df(trending_now(popular_global_soup)))
 
         """
         :returns: Poppular Hindi DataFrame
         """
         self.popular_hindi_movies_df = catch(
-            lambda: trending_now_df(trending_now(popular_hindi_soup)))
+            'None', lambda: trending_now_df(trending_now(popular_hindi_soup)))

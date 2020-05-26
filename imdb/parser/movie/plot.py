@@ -1,5 +1,5 @@
 from imdb.utils.config import base_uri, imdb_uris
-from imdb.utils.helpers import catch, catch_dict, unicode
+from imdb.utils.helpers import catch, unicode
 from imdb.utils.utils import BeautifulSoup, get, pd, re
 
 
@@ -19,34 +19,35 @@ class plot:
         """
         :returns: Movie Title
         """
-        movie_tag = soup.select_one('h3[itemprop="name"]')
-        self.title = catch(lambda: unicode(movie_tag.a.get_text()))
-        self.title_url = catch(lambda: unicode(
+        movie_tag = catch(
+            'None', lambda: soup.select_one('h3[itemprop="name"]'))
+        self.title = catch('None', lambda: unicode(movie_tag.a.get_text()))
+        self.title_url = catch('None', lambda: unicode(
             '%s%s' % (base_uri, movie_tag.a['href'][1:])))
-        self.year = catch(lambda: int(re.findall(
+        self.year = catch('None', lambda: int(re.findall(
             r"\d+", unicode(movie_tag.select_one('.nobr').get_text()))[0]))
 
         """
         :returns: Movie Plot
         """
-        self.plot = catch(lambda: unicode(soup.select_one(
+        self.plot = catch('None', lambda: unicode(soup.select_one(
             '#synopsis').findNext('ul').get_text()).replace("\'", ""))
 
         """
         :returns: Movies Summaries
         """
-        block = catch(lambda: soup.select_one(
+        block = catch('None', lambda: soup.select_one(
             '#summaries').findNext('ul').select('li'))
-        self.summaries = [catch(lambda: unicode(
-            ' '.join(tag.text.split()))) for tag in block]
+        self.summaries = catch('None', lambda: [unicode(
+            ' '.join(tag.text.split())) for tag in block])
 
         """
         :returns: Creates Dict from the above info. if available.
         """
-        self.imdb_plot_metadata = catch_dict(lambda: {"Movie Name": self.title,
-                                                      "Movie URI": self.title_url,
-                                                      "Title ID": self.title_id,
-                                                      "Year": self.year,
-                                                      "Movie Plot URI": self.plot_uri,
-                                                      "Plot": self.plot,
-                                                      "Summaries": self.summaries})
+        self.imdb_plot_metadata = catch('dict', lambda: {"Movie Name": self.title,
+                                                         "Movie URI": self.title_url,
+                                                         "Title ID": self.title_id,
+                                                         "Year": self.year,
+                                                         "Movie Plot URI": self.plot_uri,
+                                                         "Plot": self.plot,
+                                                         "Summaries": self.summaries})

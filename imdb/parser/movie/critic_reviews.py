@@ -1,5 +1,5 @@
 from imdb.utils.config import base_uri, imdb_uris, tag_search
-from imdb.utils.helpers import catch, catch_dict, critic_df, digits, unicode
+from imdb.utils.helpers import catch, critic_df, digits, unicode
 from imdb.utils.utils import BeautifulSoup, get, pd, re
 
 
@@ -19,19 +19,21 @@ class critic_reviews:
         """
         :returns: Holds page Info tags
         """
-        critic_tag = soup.select('tr[itemprop="reviews"]')
+        critic_tag = catch('None', lambda: soup.select(
+            'tr[itemprop="reviews"]'))
+        movie_tag = catch(
+            'None', lambda: soup.select_one('h3[itemprop="name"]'))
 
         """
         :returns: Movie Title
         """
-        movie_tag = soup.select_one('h3[itemprop="name"]')
-        self.title = catch(lambda: unicode(movie_tag.a.get_text()))
-        self.title_url = catch(lambda: unicode(
+        self.title = catch('None', lambda: unicode(movie_tag.a.get_text()))
+        self.title_url = catch('None', lambda: unicode(
             '%s%s' % (base_uri, movie_tag.a['href'][1:])))
-        self.year = catch(lambda: int(re.findall(
+        self.year = catch('None', lambda: int(re.findall(
             r"\d+", unicode(movie_tag.select_one('.nobr').get_text()))[0]))
 
         """
         :returns: Critic Review Demographics
         """
-        self.critic_reviews_df = catch(lambda: critic_df(critic_tag))
+        self.critic_reviews_df = catch('None', lambda: critic_df(critic_tag))

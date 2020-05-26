@@ -6,3 +6,4 @@ textblob
 pandas
 setuptools
 twine
+unidecode

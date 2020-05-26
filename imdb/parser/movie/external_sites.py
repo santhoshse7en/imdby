@@ -1,5 +1,5 @@
 from imdb.utils.config import base_uri, imdb_uris, tag_search
-from imdb.utils.helpers import catch, catch_list, catch_dict, dataframe_data, unicode, external_site
+from imdb.utils.helpers import catch, dataframe_data, external_site, unicode
 from imdb.utils.utils import BeautifulSoup, get, pd, re
 
 
@@ -19,65 +19,66 @@ class external_sites:
         """
         :returns: Movie Title
         """
-        movie_tag = soup.select_one('h3[itemprop="name"]')
-        self.title = catch(lambda: unicode(movie_tag.a.get_text()))
-        self.title_url = catch(lambda: unicode(
+        movie_tag = catch(
+            'None', lambda: soup.select_one('h3[itemprop="name"]'))
+        self.title = catch('None', lambda: unicode(movie_tag.a.get_text()))
+        self.title_url = catch('None', lambda: unicode(
             '%s%s' % (base_uri, movie_tag.a['href'][1:])))
-        self.year = catch(lambda: int(re.findall(
+        self.year = catch('None', lambda: int(re.findall(
             r"\d+", unicode(movie_tag.select_one('.nobr').get_text()))[0]))
 
         """
         returns: Official Sites DataFrame if available.
         """
         self.official_sites_df = catch(
-            lambda: external_site(tag_search['official'], soup))
-        self.official_sites_names = catch_list(
-            lambda: self.official_sites_df.Name.tolist())
-        self.official_sites_urls = catch_list(
-            lambda: self.official_sites_df.URI.tolist())
+            'None', lambda: external_site(tag_search['official'], soup))
+        self.official_sites_names = catch(
+            'list', lambda: self.official_sites_df.Name.tolist())
+        self.official_sites_urls = catch(
+            'list', lambda: self.official_sites_df.URI.tolist())
 
         """
         returns: Miscellaneous Sites DataFrame if available.
         """
         self.miscellaneous_sites_df = catch(
-            lambda: external_site(tag_search['miscellaneous'], soup))
-        self.miscellaneous_sites_names = catch_list(
-            lambda: self.miscellaneous_sites_df.Name.tolist())
-        self.miscellaneous_sites_urls = catch_list(
-            lambda: self.miscellaneous_sites_df.URI.tolist())
+            'None', lambda: external_site(tag_search['miscellaneous'], soup))
+        self.miscellaneous_sites_names = catch(
+            'list', lambda: self.miscellaneous_sites_df.Name.tolist())
+        self.miscellaneous_sites_urls = catch(
+            'list', lambda: self.miscellaneous_sites_df.URI.tolist())
 
         """
         returns: Photographs Sites DataFrame if available.
         """
         self.photographs_sites_df = catch(
-            lambda: external_site(tag_search['photo'], soup))
-        self.photographs_sites_names = catch_list(
-            lambda: self.photographs_sites_df.Name.tolist())
-        self.photographs_sites_urls = catch_list(
-            lambda: self.photographs_sites_df.URI.tolist())
+            'None', lambda: external_site(tag_search['photo'], soup))
+        self.photographs_sites_names = catch(
+            'list', lambda: self.photographs_sites_df.Name.tolist())
+        self.photographs_sites_urls = catch(
+            'list', lambda: self.photographs_sites_df.URI.tolist())
 
         """
         returns: Videos Clips and Trailers Sites DataFrame if available.
         """
         self.videos_clips_and_trailers_sites_df = catch(
-            lambda: external_site(tag_search['videos'], soup))
-        self.videos_clips_and_trailers_sites_names = catch_list(
-            lambda: self.videos_clips_and_trailers_sites_df.Name.tolist())
-        self.videos_clips_and_trailers_sites_urls = catch_list(
-            lambda: self.videos_clips_and_trailers_sites_df.URI.tolist())
+            'None', lambda: external_site(tag_search['videos'], soup))
+        self.videos_clips_and_trailers_sites_names = catch(
+            'list', lambda: self.videos_clips_and_trailers_sites_df.Name.tolist())
+        self.videos_clips_and_trailers_sites_urls = catch(
+            'list', lambda: self.videos_clips_and_trailers_sites_df.URI.tolist())
 
         """
         :returns: Creates Meta Data from the above info. if available.
         """
-        self.imdb_external_sites_metadata = catch_dict(lambda: {"Movie Title": self.title,
-                                                                "Movie URL": self.external_sites_url,
-                                                                "Title ID": self.title_id,
-                                                                "Year": self.year,
-                                                                "Official Sites": {"Name": self.official_sites_names,
-                                                                                   "URL": self.official_sites_urls},
-                                                                "Miscellaneous Sites": {"Name": self.miscellaneous_sites_names,
-                                                                                        "URL": self.miscellaneous_sites_urls},
-                                                                "Photographs": {"Name": self.photographs_sites_names,
-                                                                                "URL": self.photographs_sites_urls},
-                                                                "Video Clips and Trailers": {"Name": self.videos_clips_and_trailers_sites_names,
-                                                                                             "URL": self.videos_clips_and_trailers_sites_urls}})
+        self.imdb_external_sites_metadata = catch('dict', lambda: {"Movie Title": self.title,
+                                                                   "Movie URL": self.external_sites_url,
+                                                                   "Title ID": self.title_id,
+                                                                   "Year": self.year,
+                                                                   "Official Sites": {"Name": self.official_sites_names,
+                                                                                      "URL": self.official_sites_urls},
+                                                                   "Miscellaneous Sites": {"Name": self.miscellaneous_sites_names,
+                                                                                           "URL": self.miscellaneous_sites_urls},
+                                                                   "Photographs": {"Name": self.photographs_sites_names,
+                                                                                   "URL": self.photographs_sites_urls},
+                                                                   "Video Clips and Trailers": {"Name": self.videos_clips_and_trailers_sites_names,
+                                                                                                "URL": self.videos_clips_and_trailers_sites_urls}})

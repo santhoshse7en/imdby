@@ -1,5 +1,5 @@
 from imdb.utils.config import base_uri, imdb_uris
-from imdb.utils.helpers import catch, catch_list, dataframe_data, unicode
+from imdb.utils.helpers import catch, dataframe_data, unicode
 from imdb.utils.utils import BeautifulSoup, get, pd, re
 
 
@@ -22,17 +22,18 @@ class external_reviews:
         """
         :returns: movie title if available.
         """
-        movie_tag = soup.select_one('h3[itemprop="name"]')
-        self.title = catch(lambda: unicode(movie_tag.a.get_text()))
-        self.title_url = catch(lambda: unicode(
+        movie_tag = catch(
+            'None', lambda: soup.select_one('h3[itemprop="name"]'))
+        self.title = catch('None', lambda: unicode(movie_tag.a.get_text()))
+        self.title_url = catch('None', lambda: unicode(
             '%s%s' % (base_uri, movie_tag.a['href'][1:])))
-        self.year = catch(lambda: int(re.findall(
+        self.year = catch('None', lambda: int(re.findall(
             r"\d+", unicode(movie_tag.select_one('.nobr').get_text()))[0]))
 
         """
         :returns: total critic reviews if available.
         """
-        self.external_reviews_count = catch(lambda: int(
+        self.external_reviews_count = catch('None', lambda: int(
             ''.join(i for i in soup.select_one('.desc').text if i.isdigit())))
 
         """
@@ -45,13 +46,14 @@ class external_reviews:
                 columns=['Title', 'Critic', 'IMDb_URI'])
 
             for item in links:
-                text = catch(lambda: unicode(item.get_text()))
-                start = catch(lambda: text.find('['))
-                end = catch(lambda: text.find(']'))
+                text = catch('None', lambda: unicode(item.get_text()))
+                start = catch('None', lambda: text.find('['))
+                end = catch('None', lambda: text.find(']'))
 
-                self.external_reviews_df.loc[len(self.external_reviews_df)] = [catch(lambda: unicode(text[:start-1])),
-                                                                           catch(lambda: unicode(text[start+1:end])),
-                                                                           catch(lambda: unicode('%s%s' % (base_uri, item.a['href'][1:])))]
+                self.external_reviews_df.loc[len(self.external_reviews_df)] = [catch('None', lambda: unicode(text[:start-1])),
+                                                                               catch('None', lambda: unicode(
+                                                                                   text[start+1:end])),
+                                                                               catch('None', lambda: unicode('%s%s' % (base_uri, item.a['href'][1:])))]
             self.external_reviews_df = dataframe_data(self.external_reviews_df)
         except:
             self.external_reviews_df = None

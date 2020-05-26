@@ -28,23 +28,19 @@ class top_india_charts:
         """
         :returns: top_rated_indian_movies DataFrame
         """
-        self.top_rated_indian_movies_df = catch(lambda: top_250(
-            indian_soup.select_one('.lister-list').select('tr')))
+        self.top_rated_indian_movies_df = catch('None', lambda: top_250(indian_soup))
 
         """
         :returns: top_rated_tamil_movies DataFrame
         """
-        self.top_rated_tamil_movies_df = catch(lambda: top_250(
-            tamil_soup.select_one('.lister-list').select('tr')))
+        self.top_rated_tamil_movies_df = catch('None', lambda: top_250(tamil_soup))
 
         """
         :returns: top_rated_telugu_movies DataFrame
         """
-        self.top_rated_telugu_movies_df = catch(lambda: top_250(
-            telugu_soup.select_one('.lister-list').select('tr')))
+        self.top_rated_telugu_movies_df = catch('None', lambda: top_250(telugu_soup))
 
         """
         :returns: top_rated_malayalam_movies DataFrame
         """
-        self.top_rated_malayalam_movies_df = catch(lambda: top_250(
-            malayalam_soup.select_one('.lister-list').select('tr')))
+        self.top_rated_malayalam_movies_df = catch('None', lambda: top_250(malayalam_soup))

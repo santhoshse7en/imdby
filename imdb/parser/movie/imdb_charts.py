@@ -37,44 +37,42 @@ class imdb_charts:
         """
         :returns: top_rated_movies DataFrame
         """
-        self.top_rated_movies_df = catch(lambda: top_250(
-            top_soup.select_one('.lister-list').select('tr')))
+        self.top_rated_movies_df = catch('None', lambda: top_250(top_soup))
 
         """
         :returns: top_rated_english_movies DataFrame
         """
-        self.top_rated_english_movies_df = catch(lambda: top_250(
-            top_english_soup.select_one('.lister-list').select('tr')))
+        self.top_rated_english_movies_df = catch(
+            'None', lambda: top_250(top_english_soup))
 
         """
         :returns: lowest_rated_movies DataFrame
         """
-        self.lowest_rated_movies_df = catch(lambda: top_250(
-            bottom_soup.select_one('.lister-list').select('tr')))
+        self.lowest_rated_movies_df = catch(
+            'None', lambda: top_250(bottom_soup))
 
         """
         :returns: most_popular_movies DataFrame
         """
-        self.most_popular_movies_df = catch(lambda: top_250(
-            most_popular_movies_soup.select_one('.lister-list').select('tr')))
+        self.most_popular_movies_df = catch(
+            'None', lambda: top_250(most_popular_movies_soup))
 
         """
         :returns: top_rated_tv_shows DataFrame
         """
-        self.top_rated_tv_shows_df = catch(lambda: top_250(
-            toptv_soup.select_one('.lister-list').select('tr')))
+        self.top_rated_tv_shows_df = catch('None', lambda: top_250(toptv_soup))
 
         """
         :returns: most_popular_tv_shows DataFrame
         """
-        self.most_popular_tv_shows_df = catch(lambda: top_250(
-            most_popular_tv_shows_soup.select_one('.lister-list').select('tr')))
+        self.most_popular_tv_shows_df = catch(
+            'None', lambda: top_250(most_popular_tv_shows_soup))
 
         """
         :returns: top_box_office_us_movies DataFrame
         """
         box_office = catch(
-            lambda: box_office_soup.select_one('#boxoffice').h4.text)
-        date = catch(lambda: box_office[11:-6].split(' - '))
-        self.top_box_office_df = catch(lambda: top_box_office(
+            'None', lambda: box_office_soup.select_one('#boxoffice').h4.text)
+        date = catch('None', lambda: box_office[11:-6].split(' - '))
+        self.top_box_office_df = catch('None', lambda: top_box_office(
             box_office_soup.select_one('tbody').select('tr'), box_office, date))
