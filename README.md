@@ -1,7 +1,6 @@
-[![PyPI Version](https://img.shields.io/pypi/v/imdby.svg)](https://pypi.org/project/imdby)
-[![Coverage Status](https://coveralls.io/repos/github/santhoshse7en/imdby/badge.svg?branch=master)](https://coveralls.io/github/santhoshse7en/imdby?branch=master)
-[![License](https://img.shields.io/pypi/l/imdby.svg)](https://pypi.python.org/pypi/imdby/)
-[![Documentation Status](https://readthedocs.org/projects/pip/badge/?version=latest&style=flat)](https://santhoshse7en.github.io/imdby_doc)
+[![PyPI Version](https://img.shields.io/pypi/v/imdby.svg?style=flat-square)](https://pypi.org/project/imdby)
+[![License](https://img.shields.io/pypi/l/imdby.svg?style=flat-square)](https://pypi.python.org/pypi/imdby/)
+[![Documentation Status](https://readthedocs.org/projects/pip/badge/?version=latest&style=flat-square)](https://santhoshse7en.github.io/imdby_doc)
 
 # imdby
 
