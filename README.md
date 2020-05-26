@@ -75,9 +75,7 @@ print(people.person_id, people.person_name)
 ```
 
 ## Getting help
-Please refer to the [support](https://imdby.github.io/support/) page on the [project homepage](https://imdby.github.io/) and to the the online documentation on [Read The Docs](https://imdby.readthedocs.io/).
-
-The sources are available on [GitHub](https://github.com/santhoshse7en/imdby).
+Please refer to the the online documentation on [Read The Docs](https://imdby.readthedocs.io/).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
