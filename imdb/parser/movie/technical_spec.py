@@ -119,7 +119,7 @@ class technical_spec:
         """
 
         self.imdb_technical_spec_metadata = catch('dict', lambda: {"Movie Name": self.title,
-                                                                   "Movie URI": self.title_uri,
+                                                                   "Movie URI": self.title_url,
                                                                    "Title ID": self.title_id,
                                                                    "Year": self.year,
                                                                    "Movie Technical Spec URL": self.technical_spec_url,

@@ -190,8 +190,8 @@ def top_250(soup):
                                                                  unicode(rating_card.strong.get_text()))),
                                                              catch('None', lambda: int(re.findall(
                                                                  r"\d+", unicode(rating_card.strong['title'].replace(',', '')))[-1])),
-                                                             catch(
-                                                                 lambda: unicode(rating_card.strong['title'])),
+                                                             catch('None', lambda: unicode(
+                                                                 rating_card.strong['title'])),
                                                              catch('None', lambda: unicode(poster_card.select_one('img')['src']))]
     top_rated_movies_df = dataframe_data(top_rated_movies_df)
     return top_rated_movies_df
@@ -300,7 +300,7 @@ def review_df(analyser, targeted_tag):
                                                      catch('None', lambda: unicode(item.select_one(
                                                          '.spoiler-warning').get_text())),
                                                      catch(
-                                                         lambda: sentiment_textblob(analysis)),
+                                                         'None', lambda: sentiment_textblob(analysis)),
                                                      catch('None', lambda: analyser.polarity_scores(
                                                          user_review)['compound']),
                                                      catch('None', lambda: analyser.polarity_scores(user_review))]
@@ -402,12 +402,16 @@ def rating_demo_df(targeted_tag):
     for tag in targeted_tag.select('tr')[1:]:
         demo_tag = tag.select('td[align="center"]')
 
-        rating_demo_df.loc[len(rating_demo_df)] = [tag.select_one('div[class="allText"]').text,
-                                                   rating_demo(demo_tag[0]),
-                                                   rating_demo(demo_tag[1]),
-                                                   rating_demo(demo_tag[2]),
-                                                   rating_demo(demo_tag[3]),
-                                                   rating_demo(demo_tag[4])]
+        rating_demo_df.loc[len(rating_demo_df)] = [catch('None', lambda: tag.select_one('div[class="allText"]').text),
+                                                   catch('None', lambda: rating_demo(
+                                                       demo_tag[0])),
+                                                   catch('None', lambda: rating_demo(
+                                                       demo_tag[1])),
+                                                   catch('None', lambda: rating_demo(
+                                                       demo_tag[2])),
+                                                   catch('None', lambda: rating_demo(
+                                                       demo_tag[3])),
+                                                   catch('None', lambda: rating_demo(demo_tag[4]))]
     rating_demo_df = dataframe_data(rating_demo_df)
     return rating_demo_df
 
@@ -419,9 +423,10 @@ def rating_demo_region_df(targeted_tag):
     for tag in targeted_tag.findNext('table').select('tr')[1:]:
         demo_tag = tag.select('td[align="center"]')
 
-        rating_demo_df.loc[len(rating_demo_df)] = [rating_demo(demo_tag[0]),
-                                                   rating_demo(demo_tag[1]),
-                                                   rating_demo(demo_tag[2])]
+        rating_demo_df.loc[len(rating_demo_df)] = [catch('None', lambda: rating_demo(demo_tag[0])),
+                                                   catch('None', lambda: rating_demo(
+                                                       demo_tag[1])),
+                                                   catch('None', lambda: rating_demo(demo_tag[2]))]
     rating_demo_df = dataframe_data(rating_demo_df)
     return rating_demo_df
 
@@ -432,10 +437,10 @@ def rating_df(targeted_tag):
 
     for tag in targeted_tag.findPrevious('table').select('tr')[1:]:
 
-        rating_df.loc[len(rating_df)] = [unicode(tag.select_one('div[class="rightAligned"]').get_text()),
-                                         unicode(tag.select_one(
-                                             'div[class="topAligned"]').get_text()),
-                                         unicode(tag.select_one('div[class="leftAligned"]').get_text())]
+        rating_df.loc[len(rating_df)] = [catch('None', lambda: unicode(tag.select_one('div[class="rightAligned"]').get_text())),
+                                         catch('None', lambda: unicode(tag.select_one(
+                                             'div[class="topAligned"]').get_text())),
+                                         catch('None', lambda: unicode(tag.select_one('div[class="leftAligned"]').get_text()))]
 
     rating_df = dataframe_data(rating_df)
     return rating_df
