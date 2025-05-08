@@ -1,7 +1,3 @@
-Here’s a refined and professional rewrite of your `imdby` package README with consistent formatting, enhanced clarity, and improved tone:
-
----
-
 [![PyPI Version](https://img.shields.io/pypi/v/imdby.svg?style=flat-square)](https://pypi.org/project/imdby)
 [![License](https://img.shields.io/pypi/l/imdby.svg?style=flat-square)](https://pypi.python.org/pypi/imdby/)
 [![Documentation Status](https://readthedocs.org/projects/pip/badge/?version=latest\&style=flat-square)](https://santhoshse7en.github.io/imdby_doc)
@@ -113,7 +109,3 @@ Want to contribute? Fork the repo and send a pull request!
 ## 📄 License
 
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
-
----
-
-Would you like help generating badges for test coverage, Python versions, or GitHub actions as well?
