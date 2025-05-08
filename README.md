@@ -41,7 +41,7 @@
 
 ---
 
-## 🛠 Installation
+## 📥 Installation
 
 Install from the GitHub repository (recommended for the latest updates):
 
