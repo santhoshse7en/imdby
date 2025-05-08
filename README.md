@@ -14,7 +14,7 @@
 
 | Resource         | Link                                                     |
 | ---------------- | -------------------------------------------------------- |
-| 📦 PyPI          | [imdby on PyPI](https://pypi.org/project/imdby/)         |
+| 🐍 PyPI          | [imdby on PyPI](https://pypi.org/project/imdby/)         |
 | 🛠 Repository    | [GitHub Repo](https://github.com/santhoshse7en/imdby/)   |
 | 📚 Documentation | [imdby Docs](https://santhoshse7en.github.io/imdby_doc/) |
 
