@@ -194,9 +194,7 @@ If you're planning a significant change, please open an issue first to discuss y
 
 ## ⭐ Star History
 
-<a href="https://star-history.com/#santhoshse7en/imdby&Date">
-  <img src="https://api.star-history.com/svg?repos=santhoshse7en/imdby&type=Date" alt="Star History Chart" width="600">
-</a>
+See how **imdby**'s stars have grown over time: [Star History for santhoshse7en/imdby](https://star-history.com/#santhoshse7en/imdby&Date)
 
 ---
 
