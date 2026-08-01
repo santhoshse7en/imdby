@@ -1,6 +1,6 @@
-from imdb.utils.config import base_uri, imdb_uris, tag_search
-from imdb.utils.helpers import catch, critic_df, digits, unicode
-from imdb.utils.utils import BeautifulSoup, get, pd, re
+from imdb.utils.config import base_uri, imdb_uris
+from imdb.utils.helpers import catch, critic_df, unicode
+from imdb.utils.utils import BeautifulSoup, get, re
 
 
 # Retrieves IMDb Plot Details

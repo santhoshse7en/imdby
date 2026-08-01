@@ -11,7 +11,7 @@ class movie:
     :param title_id: Unique identification for every multimedia in IMdb.
     """
 
-    def __init__(self, title_id: str) -> bool:
+    def __init__(self, title_id: str) -> None:
         self.title_id = title_id
         self.movie_uri = imdb_uris["title"] % self.title_id
 

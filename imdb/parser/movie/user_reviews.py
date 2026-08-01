@@ -1,10 +1,8 @@
 from imdb.utils.config import base_uri, imdb_uris
-from imdb.utils.helpers import (catch, digits, review_df, sentiment_textblob,
-                                unicode)
+from imdb.utils.helpers import catch, digits, review_df, unicode
 from imdb.utils.utils import (BeautifulSoup, By, Options,
                               SentimentIntensityAnalyzer, WebDriverWait,
-                              chromedriver_binary, ec, get, pd, re, sys, time,
-                              webdriver)
+                              ec, get, re, sys, time, webdriver)
 
 
 # Retrieves IMDb User Reviews
@@ -18,7 +16,7 @@ class user_reviews:
     :returns: Returns all the user reviews.
     """
 
-    def __init__(self, title_id: str, remove_spoiler: False):
+    def __init__(self, title_id: str, remove_spoiler: bool):
         self.title_id = title_id
 
         if remove_spoiler is False:
@@ -86,6 +84,7 @@ class user_reviews:
             neu_sum += score['neu']
             neg_sum += score['neg']
             pos_sum += score['pos']
+            compound_sum += score['compound']
 
         if count:
             self.final_sentiment_scores = catch('None', lambda: {"neu": round(neu_sum / count, 3), "neg": round(

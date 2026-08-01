@@ -1,7 +1,6 @@
 from imdb.utils.config import base_uri, imdb_uris, tag_search
-from imdb.utils.helpers import (catch, dataframe_data, index_finder,
-                                technical_specs, unicode)
-from imdb.utils.utils import BeautifulSoup, get, pd, re
+from imdb.utils.helpers import catch, index_finder, technical_specs, unicode
+from imdb.utils.utils import BeautifulSoup, get, re
 
 
 # Retrieves IMDb Technical Spec Details

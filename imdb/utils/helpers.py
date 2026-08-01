@@ -15,11 +15,11 @@ def catch(default, func, handle=lambda e: e, *args, **kwargs):
         return errors[default]
 
 
-def unicode(text: str) -> bool:
+def unicode(text: str) -> str:
     return unidecode.unidecode(text).strip()
 
 
-def digits(text: str) -> bool:
+def digits(text: str) -> int:
     return int(''.join(i for i in text if i.isdigit()))
 
 
@@ -32,7 +32,7 @@ The below functions parse Full Cast & Crew Page in IMDb
 """
 
 
-def index_finder(targeted_tags, text: str) -> bool:
+def index_finder(targeted_tags, text: str) -> int:
 
     for index, tag in enumerate(targeted_tags):
         if text in unicode(tag.get_text()).lower():
@@ -40,7 +40,7 @@ def index_finder(targeted_tags, text: str) -> bool:
     return index
 
 
-def india_index_finder(targeted_tags, text: str) -> bool:
+def india_index_finder(targeted_tags, text: str) -> int:
 
     for index, tag in enumerate(targeted_tags):
         if text in unicode(tag.select_one('td').a.get_text()).lower():

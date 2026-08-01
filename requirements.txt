@@ -1,7 +1,8 @@
 beautifulsoup4
+lxml
+nltk
+requests
 selenium
-vaderSentiment
-chromedriver-binary
 textblob
 pandas
 setuptools

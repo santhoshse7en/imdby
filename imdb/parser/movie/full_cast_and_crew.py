@@ -1,7 +1,7 @@
 from imdb.utils.config import base_uri, imdb_uris, tag_search
 from imdb.utils.helpers import (
     cast_credit, cast_non_credit, catch, full_cast, unicode)
-from imdb.utils.utils import BeautifulSoup, get, pd, re
+from imdb.utils.utils import BeautifulSoup, get, re
 
 
 # Retrieves IMDb Full Cast & Crew Details
@@ -21,7 +21,7 @@ class full_cast_and_crew:
                 9. Casting
     """
 
-    def __init__(self, title_id: str) -> bool:
+    def __init__(self, title_id: str) -> None:
         self.title_id = title_id
         self.full_cast_and_crew_uri = imdb_uris["fullcredits"] % self.title_id
 

@@ -11,7 +11,7 @@ class taglines:
     :param title_id: Unique identification for every multimedia in IMdb.
     """
 
-    def __init__(self, title_id: str) -> bool:
+    def __init__(self, title_id: str) -> None:
         self.title_id = title_id
         self.taglines_uri = imdb_uris["taglines"] % self.title_id
 

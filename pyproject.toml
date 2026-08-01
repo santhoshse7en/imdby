@@ -1,0 +1,101 @@
+[build-system]
+requires = ["setuptools>=69.5"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imdby"
+version = "0.1.6"
+description = "Scrape IMDb movies, people, companies, charts, and reviews in Python - no official API required."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "M Santhosh Kumar", email = "santhoshse7en@gmail.com" },
+]
+keywords = [
+    "imdb",
+    "imdby",
+    "movie",
+    "movies",
+    "people",
+    "cinema",
+    "film",
+    "person",
+    "cast",
+    "actor",
+    "actress",
+    "director",
+    "character",
+    "critics",
+    "reviews",
+    "sentiment analysis",
+    "company",
+    "event",
+    "news",
+    "top250",
+    "bottom100",
+    "web scraping",
+    "scraper",
+    "imdb-api",
+    "no api key",
+    "bs4",
+    "lxml",
+    "upcoming",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: System Administrators",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Multimedia",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "beautifulsoup4",
+    "lxml",
+    "nltk",
+    "pandas",
+    "requests",
+    "selenium>=4.6",
+    "textblob",
+    "unidecode",
+]
+
+[project.optional-dependencies]
+dev = ["build", "ruff", "twine"]
+
+[project.urls]
+Homepage = "https://github.com/santhoshse7en/imdby"
+Repository = "https://github.com/santhoshse7en/imdby"
+Documentation = "https://santhoshse7en.github.io/imdby_doc/"
+"Bug Tracker" = "https://github.com/santhoshse7en/imdby/issues"
+
+[tool.setuptools.packages.find]
+include = ["imdb*"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+# Scoped to real defects (undefined names, unused imports/variables, syntax
+# errors) rather than style rules, so it stays a useful signal instead of
+# fighting this codebase's existing formatting conventions.
+select = ["E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Central import hub: re-exports third-party names for other modules to
+# import from, so "unused" here is by design.
+"imdb/utils/utils.py" = ["F401"]

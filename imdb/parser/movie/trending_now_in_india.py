@@ -1,4 +1,4 @@
-from imdb.utils.config import base_uri, imdb_uris
+from imdb.utils.config import imdb_uris
 from imdb.utils.helpers import catch, trending_now, trending_now_df
 from imdb.utils.utils import BeautifulSoup, get
 
